@@ -17,3 +17,12 @@ def test_chart_window_and_source_label(days):
 def test_invalid_window():
     with pytest.raises(ValueError):
         price_chart(DemoMarketDataProvider().history("SPY"), "SPY", 0)
+
+
+def test_real_chart_uses_calendar_window_and_real_source():
+    import pandas as pd
+    history = pd.DataFrame({"date": pd.bdate_range("2026-01-01", periods=100), "close": range(100, 200)})
+    chart = price_chart(history, "SPY", 30, source_label="Yahoo Finance 日线")
+    assert len(chart.data[0].x) < 30
+    assert "模拟" not in chart.layout.title.text
+    assert "Yahoo Finance" in chart.layout.title.text
