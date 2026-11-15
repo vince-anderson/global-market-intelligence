@@ -218,3 +218,28 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local secrets, credentials and sensitive datasets
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets/
+credentials/
+*.pem
+*.key
+*.p12
+*.pfx
+data/local/
+data/private/
+data/raw/
+local_data/
+*.duckdb
+*.sqlite
+*.sqlite3
+*.parquet
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
